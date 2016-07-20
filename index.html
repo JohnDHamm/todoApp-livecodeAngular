@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular To Do live code</title>
+	<link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-app="TodoApp">
+	
+	<nav class="navbar navbar-default" ng-controller="NavCtrl">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Todo App</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right" ng-repeat="thingy in navItems">
+					<li><a href="#">{{thingy.name}}</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div ng-controller="TodoCtrl">
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<button class="col-xs-6 btn btn-success" ng-click="newItem()">New Item</button>
+				<button class="col-xs-6 btn btn-info" ng-click="allItems()">All Items</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 main-container">
+				<div class="col-xs-12" ng-show="showListView">
+					<h1>Todo List</h1>
+					<div class="row">
+						<div class="col-xs-6 col-xs-offset-3">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+								</span>
+								<input type="text" class="form-control" placeholder="Search for ..." ng-model="searchText">
+							</div>
+						</div>
+					</div>
+					<div ng-repeat="thingy in items | filter: searchText">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="col-xs-1">
+									<input type="checkbox"/>
+								</div>
+								<div class="col-xs-7">{{thingy.task}}</div>
+								<div class="col-xs-2">{{thingy.dueDate}}</div>
+								<div class="col-xs-1">{{thingy.assignedTo}}</div>
+								<div class="col-xs-1"><button class="btn btn-danger">X</button>	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12" ng-show="!showListView">
+					<h1>New Todo</h1>
+					<form>
+						<div class="form-group">
+							<label>Task Description</label>
+							<input type="text" class="form-control" placeholder="Some important task" ng-model="newTask.task">
+						</div>
+						<div class="form-group">
+							<label>Due Date</label>
+							<input type="text" class="form-control" placeholder="8/1/16" ng-model="newTask.dueDate">
+						</div>
+						<div class="form-group">
+							<label>Assigned To</label>
+							<input type="text" class="form-control" placeholder="Fred Whatever" ng-model="newTask.assignedTo">
+						</div>
+						<div class="form-group">
+							<label>Location</label>
+							<input type="text" class="form-control" placeholder="Basement" ng-model="newTask.location">
+						</div>
+						<div class="form-group">
+							<label>Urgency</label>
+							<input type="text" class="form-control" placeholder="Low" ng-model="newTask.urgency">
+						</div>
+						<div class="form-group">
+							<label>Dependencies</label>
+							<input type="text" class="form-control" placeholder="flashlight, Mom, courage" ng-model="newTask.dependencies">
+						</div>
+						<button class="btn btn-default" ng-click="addNewItem()">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+
+</body>
+</html>
