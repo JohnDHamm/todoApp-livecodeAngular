@@ -1,6 +1,7 @@
 "use strict";
 
-var app = angular.module("TodoApp", ['ngRoute']);
+var app = angular.module("TodoApp", ['ngRoute'])
+	.constant('FirebaseURL', "https://todoapp-angular-85937.firebaseio.com/");
 
  //for swapping partials - do not have to declare the controller in the markup
 app.config(function($routeProvider){
@@ -13,7 +14,7 @@ app.config(function($routeProvider){
 			templateUrl: "partials/item-new.html",
 			controller: "ItemNewCtrl"
 		}).
-		when('/items/details', {
+		when('/items/details/:itemId', {
 			templateUrl: "partials/item-details.html",
 			controller: "ItemViewCtrl"
 		}).
