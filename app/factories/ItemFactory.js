@@ -47,18 +47,22 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http, AuthFactory){
 		});
 	}
 
-	let checkedItem = function(item) {
+	let checkedItem = function(item) { 
 		console.log("item checked", item);
 		// let newItem = item;
-		let itemUrl = FirebaseURL + "/items/" + item.id + ".json";
+		let itemUrl = FirebaseURL + "items/" + item.id + ".json";
 		// let newItem.isCompleted = item.isCompleted ? false : true;
 		console.log("itemUrl", itemUrl);
+		let testvar = JSON.stringify(item);
+		console.log(testvar);
 		return $q(function(resolve, reject){
-			$http.put(itemUrl, 
-				JSON.stringify(item))
-				.success(function(Obj){
-					resolve(Obj);
-				});
+			$http.put(itemUrl, item)
+			.success(function(Obj){
+				resolve(Obj);
+			})
+			.error(function(error){
+				reject(error);
+			}); 
 		});
 
 		console.log("item.isCompleted", itemStatus);

@@ -23,8 +23,8 @@ app.controller("ItemListCtrl", function($scope, ItemStorage, AuthFactory, $locat
 			});
 	}
 
-	$scope.CheckedTask = function(checkedId){
-		ItemStorage.checkedItem(checkedId)
+	$scope.CheckedTask = function(item){
+		ItemStorage.checkedItem(item)
 			.then(function(){
 				ItemStorage.getItemList()
 				.then (function(itemCollection){
