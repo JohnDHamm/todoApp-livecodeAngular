@@ -24,7 +24,7 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="col-xs-1">
-							<input type="checkbox"/>
+							<input type="checkbox" ng-model="thingy.isCompleted" ng-click="CheckedTask(thingy)"/>
 						</div>
 						<div class="col-xs-7">
 							<a href="#/items/details/{{thingy.id}}">{{thingy.task}}</a>

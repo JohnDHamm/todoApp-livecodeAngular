@@ -1,10 +1,11 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope, AuthFactory){
+app.controller("NavCtrl", function($scope, AuthFactory, $location){
 	$scope.navItems = [
 		{
 			name: "Logout",
-			url: "#/logout"
+			// url: "#/logout",
+			logout: true
 		}, 
 		{
 			name: "All Items",
@@ -18,6 +19,9 @@ app.controller("NavCtrl", function($scope, AuthFactory){
 
 		$scope.logout = function(){
 		AuthFactory.logout();
+		$location.url("/login");
+		// $scope.$apply();
+
 	};
-	
+
 });

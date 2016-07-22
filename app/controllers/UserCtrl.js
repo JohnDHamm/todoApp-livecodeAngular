@@ -3,10 +3,11 @@
 app.controller("UserCtrl", function($scope, ItemStorage, AuthFactory, $location, $q) {
 
 	$scope.login = function(){
-		AuthFactory.authWithProvider();
-	};
-
-	$scope.logout = function(){
-		AuthFactory.logout();
+		AuthFactory.authWithProvider()
+			.then(function(response){
+				console.log("something" );
+				$location.path("/items/list");
+				$scope.$apply();
+			});
 	};
 })

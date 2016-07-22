@@ -47,6 +47,23 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http, AuthFactory){
 		});
 	}
 
-	return {getItemList, postNewItem, deleteItem};
+	let checkedItem = function(item) {
+		console.log("item checked", item);
+		// let newItem = item;
+		let itemUrl = FirebaseURL + "/items/" + item.id + ".json";
+		// let newItem.isCompleted = item.isCompleted ? false : true;
+		console.log("itemUrl", itemUrl);
+		return $q(function(resolve, reject){
+			$http.put(itemUrl, 
+				JSON.stringify(item))
+				.success(function(Obj){
+					resolve(Obj);
+				});
+		});
+
+		console.log("item.isCompleted", itemStatus);
+	};
+
+	return {getItemList, postNewItem, deleteItem, checkedItem};
 	
 });

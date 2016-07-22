@@ -21,7 +21,6 @@ app.factory("AuthFactory", function(){
 	var logout = function(){
 		firebase.auth().signOut().then(function(){
 			currentUserId = null;
-
 		}, function(error){
 
 		})

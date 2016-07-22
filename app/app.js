@@ -24,7 +24,14 @@ app.config(function($routeProvider, FBCreds){
 			templateUrl: "partials/item-details.html",
 			controller: "ItemViewCtrl"
 		}).
-		otherwise('/items/list');
+		when('/login', {
+			templateUrl: "partials/login.html",
+			controller: "UserCtrl"
+		}).
+		otherwise('/login'
+			// templateUrl: "partials/login.html",
+			// controller: "UserCtrl"
+		);
 });
 
 
