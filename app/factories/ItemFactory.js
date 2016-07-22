@@ -35,6 +35,16 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http){
 		});
 	};
 
-	return {getItemList, postNewItem};
+	let deleteItem = function(removeId){
+		let itemUrl = FirebaseURL + "/items/" + removeId + ".json";
+		return $q(function(resolve, reject){
+			$http.delete(itemUrl)
+				.success(function(){
+					resolve();
+				});
+		});
+	}
+
+	return {getItemList, postNewItem, deleteItem};
 	
 });
