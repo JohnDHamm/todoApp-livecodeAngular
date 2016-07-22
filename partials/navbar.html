@@ -11,7 +11,7 @@
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right" ng-repeat="thingy in navItems">
-				<li><a href="{{thingy.url}}">{{thingy.name}}</a></li>
+				<li ng-click="thingy.logout ? logout() : null"><a href="{{thingy.url}}">{{thingy.name}}</a></li>
 			</ul>
 		</div>
 	</div>

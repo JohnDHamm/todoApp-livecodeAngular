@@ -13,6 +13,7 @@
 	<div ng-include="'partials/navbar.html'">
 	</div>
 
+
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1 main-container">
 <!-- 			this is where angular injects the partial
@@ -27,6 +28,8 @@
 	<script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="lib/bower_components/firebase/firebase.js"></script>
+
 	<!-- application scripts -->
 	<script type="text/javascript" src="app/app.js"></script>
 	<!-- controllers -->
@@ -34,8 +37,11 @@
 	<script type="text/javascript" src="app/controllers/ItemNewCtrl.js"></script>
 	<script type="text/javascript" src="app/controllers/ItemViewCtrl.js"></script>
 	<script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
+	<script type="text/javascript" src="app/controllers/UserCtrl.js"></script>
 	<!-- factories -->
+	<script type="text/javascript" src="app/values/FirebaseCreds.js"></script>
 	<script type="text/javascript" src="app/factories/ItemFactory.js"></script>
+	<script type="text/javascript" src="app/factories/AuthFactory.js"></script>
 
 </body>
 </html>

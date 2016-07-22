@@ -24,14 +24,14 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="col-xs-1">
-							<input type="checkbox"/>
+							<input type="checkbox" ng-model="thingy.isCompleted" ng-click="CheckedTask(thingy)"/>
 						</div>
 						<div class="col-xs-7">
 							<a href="#/items/details/{{thingy.id}}">{{thingy.task}}</a>
 						</div>
 						<div class="col-xs-2">{{thingy.dueDate}}</div>
 						<div class="col-xs-1">{{thingy.assignedTo}}</div>
-						<div class="col-xs-1"><button class="btn btn-danger">X</button>	</div>
+						<div class="col-xs-1"><button class="btn btn-danger" ng-click="Remove(thingy.id)">X</button>	</div>
 					</div>
 				</div>
 			</div>
