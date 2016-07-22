@@ -1,11 +1,12 @@
 "use strict";
 
-app.factory("ItemStorage", function(FirebaseURL, $q, $http){
+app.factory("ItemStorage", function(FirebaseURL, $q, $http, AuthFactory){
 
 	let getItemList = function() {
 		let items = [];
 		return $q(function(resolve, reject) {
-			$http.get(`${FirebaseURL}/items.json`)
+			console.log("user id?", AuthFactory.getUser());
+			$http.get(`${FirebaseURL}/items.json?orderBy="uid"&equalTo="${AuthFactory.getUser()}"`)
 			.success(function(itemsObject) {
 				let itemCollection = itemsObject;
 				//create array from object and loop thru keys - saving fb key for each item inside the obj as an id property
@@ -14,6 +15,7 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http){
 					items.push(itemCollection[key]);
 				});
 				resolve (items);
+				console.log("items:", items);
 			})
 			.error(function(error) {
 				reject(error);

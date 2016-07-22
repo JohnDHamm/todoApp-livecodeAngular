@@ -9,14 +9,23 @@ app.factory("AuthFactory", function(){
 	    // User is signed in.
 	    console.log("user logged in, dude", user.uid);
 	    currentUserId = user.uid;
-	    // loadSongsToDOM(currentUser);
-	    // db.getSongs(templates.makeSongList, currentUser);
+
+
 	  } else {
 	    // No user is signed in.
 	    console.log("user not logged in");
 	    // currentUser = null;
 	  }
 	});
+
+	var logout = function(){
+		firebase.auth().signOut().then(function(){
+			currentUserId = null;
+
+		}, function(error){
+
+		})
+	};
 
 	var authWithProvider = function(){
 		return firebase.auth().signInWithPopup(provider);
@@ -30,7 +39,7 @@ app.factory("AuthFactory", function(){
 		return currentUserId;
 	};
 
-	return {authWithProvider, isAuthenticated, getUser};
+	return {authWithProvider, isAuthenticated, getUser, logout};
 
 });
 
